@@ -1,0 +1,7 @@
+class Solution:
+    def minCostToMoveChips(self, position: List[int]) -> int:
+        evenChips=0
+        for x in position:
+            if x%2==0:
+                evenChips+=1
+        return min(len(position)-evenChips,evenChips)
