@@ -1,0 +1,15 @@
+class Solution:
+    def leafSimilar(self, root1: TreeNode, root2: TreeNode) -> bool:
+        result1=[]
+        result2=[]
+        self.getSequence(root1,result1)
+        self.getSequence(root2,result2)
+        return (result1==result2)
+    def getSequence(self, root: TreeNode, result:list) -> TreeNode:
+        #DFS
+        if not (root.right or root.left):
+            result.append(root.val)
+        if root.left:
+            self.getSequence(root.left,result)
+        if root.right:
+            self.getSequence(root.right,result)
