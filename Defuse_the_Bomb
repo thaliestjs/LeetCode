@@ -1,0 +1,26 @@
+class Solution:
+    def decrypt(self, code: List[int], k: int) -> List[int]:
+        if k<0:
+            code.reverse()
+            k=abs(k)
+            result=self.analyse(code, k)
+            result.reverse()
+        elif k>0:
+            result=self.analyse(code, k)
+        else:
+            result=[0]*len(code)
+        return result
+
+    def analyse(self, subcode: List[int], subk: int) -> List[int]:
+        subresult=[0]*len(subcode)
+        for i in range(len(subcode)):
+            value=0
+            j=i+1
+            while (j-i)<=subk:
+                if j<len(subcode):
+                    value+=subcode[j]
+                else:
+                    value+=subcode[j-len(subcode)]
+                j+=1
+            subresult[i]=value
+        return subresult
