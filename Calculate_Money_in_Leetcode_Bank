@@ -1,0 +1,7 @@
+class Solution:
+    def totalMoney(self, n: int) -> int:
+        nbOfWeeks=n//7
+        nbOfSingleDays=n%7
+        weeksMoney = ((nbOfWeeks+3)*(nbOfWeeks+4)//2-6)*7
+        singleDaysMoney=(nbOfWeeks+nbOfSingleDays)*(nbOfWeeks+nbOfSingleDays+1)//2-((nbOfWeeks)*(nbOfWeeks+1)//2)
+        return weeksMoney+singleDaysMoney
